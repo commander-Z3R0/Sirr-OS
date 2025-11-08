@@ -94,25 +94,21 @@ jobs:
           GOFILE_TOKEN: ${{ secrets.GOFILE_TOKEN }}
           GOFILE_FOLDER_ID: ${{ secrets.GOFILE_FOLDER_ID }}
         run: |
-          # Enable nullglob so the array is empty if no files match
-          shopt -s nullglob
+          # Path to the ISO file
+          FILE_PATH="Sirr-OS/SirrOS-pinephonepro-phosh-SirrOS.img"
 
-          # Find ISO file
-          FILES=(Sirr-OS/SirrOS-pinephonepro-phosh-*.img)
-          if [ ${#FILES[@]} -eq 0 ]; then
-            echo "❌ No files found matching pattern"
+          if [ ! -f "$FILE_PATH" ]; then
+            echo "❌ File not found: $FILE_PATH"
             exit 1
           fi
-          FILE_PATH="${FILES[0]}"
-          echo "Uploading file: $FILE_PATH"
 
-          # Upload file to GoFile using Bearer token and folderId
+          # Upload the file
           RESPONSE=$(curl -s -X POST "https://upload.gofile.io/uploadfile" \
             -H "Authorization: Bearer $GOFILE_TOKEN" \
             -F "file=@$FILE_PATH" \
             -F "folderId=$GOFILE_FOLDER_ID")
 
-          # Show full response for debugging
+          # Show full response (for debugging)
           echo "Full response:"
           echo "$RESPONSE"
 
