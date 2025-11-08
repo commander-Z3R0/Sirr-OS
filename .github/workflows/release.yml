@@ -94,26 +94,32 @@ jobs:
           GOFILE_TOKEN: ${{ secrets.GOFILE_TOKEN }}
           GOFILE_FOLDER_ID: ${{ secrets.GOFILE_FOLDER_ID }}
         run: |
-          FILE_PATH=$(echo Sirr-OS/SirrOS-pinephonepro-phosh-*.img)
-          if [ ! -f "$FILE_PATH" ]; then
-            echo "❌ File not found: $FILE_PATH"
+          # Enable nullglob so the array is empty if no files match
+          shopt -s nullglob
+
+          # Find ISO file
+          FILES=(Sirr-OS/SirrOS-pinephonepro-phosh-*.img)
+          if [ ${#FILES[@]} -eq 0 ]; then
+            echo "❌ No files found matching pattern"
             exit 1
           fi
+          FILE_PATH="${FILES[0]}"
+          echo "Uploading file: $FILE_PATH"
 
-          # Upload the file using Authorization Bearer and folderId from secrets
+          # Upload file to GoFile using Bearer token and folderId
           RESPONSE=$(curl -s -X POST "https://upload.gofile.io/uploadfile" \
             -H "Authorization: Bearer $GOFILE_TOKEN" \
             -F "file=@$FILE_PATH" \
             -F "folderId=$GOFILE_FOLDER_ID")
 
-          # Display full response (useful for debugging)
+          # Show full response for debugging
           echo "Full response:"
           echo "$RESPONSE"
 
-          # Extract the download link
+          # Extract download link
           LINK=$(echo "$RESPONSE" | jq -r '.data.downloadPage')
           if [ -z "$LINK" ] || [ "$LINK" == "null" ]; then
-            echo "❌ Upload error: $RESPONSE"
+            echo "❌ Upload error"
             exit 1
           fi
 
