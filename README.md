@@ -1,7 +1,5 @@
 # SirrOS
 
-**Privacy is a right. Take it back — in your pocket.**
-
 SirrOS is a privacy-focused Linux distribution based on Mobian, designed for users who value privacy, anonymity, and digital freedom on mobile devices. Sirr — meaning "secret" in Arabic — enhances Mobian's core with additional tools tailored for secure and anonymous online communication.
 
 ## 🛠️ Included Tools
@@ -29,7 +27,7 @@ SirrOS merges Mobian’s base with potent privacy and anonymity tools, providing
 
 1. Download the latest SirrOS image from the official repository.
 2. Flash it to your supported device (e.g., PinePhone) using tools like `dd` or Etcher.
-3. Boot the device and follow the on-screen setup instructions.
+3. Boot the device and follow the two-boot methode.
 4. Enjoy a privacy-centered mobile experience.
 
 ## Usage
@@ -51,4 +49,4 @@ SirrOS is open-source software licensed under the GNU General Public License v3.
 
 ***
 
-Privacy is a right. Take it back — in your pocket.
+**Privacy is a right. Take it back — in your pocket.**
