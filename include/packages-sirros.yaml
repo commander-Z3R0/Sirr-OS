@@ -2,6 +2,7 @@
 
 architecture: {{ $architecture }}
 
+actions:
   - action: run
     chroot: true
     command: |
