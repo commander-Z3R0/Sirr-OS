@@ -97,5 +97,8 @@ actions:
     chroot: true
     script: scripts/setup-system.sh {{ $hostname }}
 
+  - action: recipe
+    recipe: include/packages-sirros.yaml
+
   - action: pack
     file: {{ $rootfs }}
