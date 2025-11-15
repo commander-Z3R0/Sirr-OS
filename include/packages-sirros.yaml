@@ -27,3 +27,8 @@ actions:
       HOME_URL="https://github.com/commander-Z3R0/Sirr-OS"
       EOF
 
+  - action: run
+    chroot: true
+    command: |
+	  rm -r /usr/share/backgrounds/gnome/blobs-*
+	  gsettings set org.gnome.desktop.interface accent-color 'blue'
