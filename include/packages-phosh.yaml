@@ -17,7 +17,7 @@ actions:
       - endeavour
       - firefox-esr
       - gnome-calendar
- #      - gnome-console
+      - gnome-console
       - gnome-software
       - gnome-software-plugin-deb
       - gnome-text-editor

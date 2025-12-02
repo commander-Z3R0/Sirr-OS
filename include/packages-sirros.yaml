@@ -12,15 +12,14 @@ actions:
       plymouth-set-default-theme -R sirros
 
 
-  - action: run
-    chroot: true
-    description: Install older KGX version from Debian Snapshot
-    command: |
-      wget https://snapshot.debian.org/archive/debian/20250503T083753Z/pool/main/g/gnome-console/gnome-console_48.0.1-2_arm64.deb
-      dpkg -i gnome-console_48.0.1-2_arm64.deb || true
-      apt-get install -f -y
-
-      rm -f gnome-console_48.0.1-2_arm64.deb
+#  - action: run
+#    chroot: true
+#    description: Install older KGX version from Debian Snapshot
+#    command: |
+#      wget https://snapshot.debian.org/archive/debian/20250503T083753Z/pool/main/g/gnome-console/gnome-console_48.0.1-2_arm64.deb
+#      dpkg -i gnome-console_48.0.1-2_arm64.deb || true
+#      apt-get install -f -y
+#      rm -f gnome-console_48.0.1-2_arm64.deb
       
   - action: run
     chroot: true
