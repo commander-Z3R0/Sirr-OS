@@ -8,7 +8,7 @@ actions:
     description: Install Privacy packages
     packages:
 #      - tor # Tor is commented out due to a conflict between carburetor and the native Tor implementation. 
-      - torsocks
+#      - torsocks
       - dnscrypt-proxy
       - proxychains
       - macchanger
