@@ -8,6 +8,9 @@ actions:
     description: Install Phosh packages
     packages:
       - mobian-phosh
+      - wget
+      - curl
+      - fastfetch
       # Additional software we don't want metapackages to depend on
       - cracklib-runtime # needed for pw change in UI, but g-c-c only recommends it
       - chatty
